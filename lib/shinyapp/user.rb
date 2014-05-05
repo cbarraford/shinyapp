@@ -31,11 +31,13 @@ module Shinyapp
       else
         # create account in chargify
         Shinyapp::Chargify::Customer.new.create({
-          first_name: @first,
-          last_name: @last,
-          email: @email,
-          organization: @org
-          reference: @username
+          customer: {
+            first_name: @first,
+            last_name: @last,
+            email: @email,
+            organization: @org,
+            reference: @username
+          }
         })
         # create account in cloudant db
         Shinyapp::Cloudant.request('', :post, self.to_json)

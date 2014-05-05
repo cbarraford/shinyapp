@@ -80,28 +80,28 @@ module Shinyapp
     post '/create' do
       user = JSON.parse(request.body.read, symbolize_names: true)
       user = Shinyapp::User.new(user)
-      user.create
+      user.create.to_json
     end
 
     put '/api/user' do
       new_user = JSON.parse(request.body.read, symbolize_names: true)
       user = Shinyapp::User.new(session[:username])
-      user.update(new_user)
+      user.update(new_user).to_json
     end
 
     delete '/api/user' do
       user = Shinyapp::User.new(session[:username])
-      user.delete
+      user.delete.to_json
     end
 
     get '/api/user/subscriptions' do
       user = Shinyapp::User.new(session[:username])
-      user.subscriptions
+      user.subscriptions.to_json
     end
 
     get '/api/user/billing' do
       user = Shinyapp::User.new(session[:username])
-      user.billing
+      user.billing.to_json
     end
 
     get '/api/chargify/payment_profiles/:id' do

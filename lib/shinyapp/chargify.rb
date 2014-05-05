@@ -6,10 +6,11 @@ module Shinyapp
     @@endpoint = nil
 
     def request(path, method = :get, data = {})
+      url = "https://#{ENV['chargify_user']}:#{ENV['chargify_passwd']}@#{ENV['chargify_url']}#{path}"
       JSON.parse(
         RestClient.send(
           method,
-          "https://#{ENV['chargify_user']}:#{ENV['chargify_passwd']}@#{ENV['chargify_url']}#{path}",
+          url,
           data.to_json,
           content_type: :json,
           accept: :json
