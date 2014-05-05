@@ -1,0 +1,40 @@
+!!! 5
+
+%html{:lang => 'en', 'ng-app' => 'shinyapp'}
+  %head
+    %script{:src => 'https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'}
+    %script{:src => 'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js'}
+    %script{:src => 'https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'}
+    %link{:rel => 'stylesheet', :href => 'https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'}
+    %link{:rel => 'stylesheet', :href => 'https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css'}
+    %link{:rel => 'stylesheet', :href => '/css/base.css'}
+    %script{:src => '/js/shinyapp.js'}
+
+  %body
+    #wrapper.container
+      #header
+        .nav.navbar.navbar-default{:role => 'navigation'}
+          .navbar-header
+            %a.navbar-brand{:href => '/'} Shiny App
+          %ul.nav.navbar-nav.navbar-right
+            - if logged_in?
+              %li
+                %a{:href => '/user/account', :target => '_self'}="Account"
+              %li
+                %a{:href => '/logout', :target => '_self'}="Logout"
+            - else
+              %li
+                %a{:href => '/signup', :target => '_self'}="Signup"
+              %li
+                %a{:href => '/login', :target => '_self'}="Login"
+
+      #content
+        = yield
+
+    #footer
+      .copyright.text-center
+        © Copyright
+        %a{:href => 'https://www.rstudio.com/'} RStudios, Inc.
+        2014
+        %a{:href => 'http://www.apache.org/licenses/LICENSE-2.0.html'} Apache License, Version 2.0
+        %br

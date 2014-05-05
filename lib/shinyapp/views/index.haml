@@ -1,0 +1,19 @@
+#intro
+  .col-centered{'ng-controller' => 'indexController'}
+    .row
+      .jumbotron
+        %h4="Easy web applications in R"
+        %p="Shiny is an elegant and powerful web framework for building interactive web applications using R. Shiny lets you combine the computational power of R and the interactivity of the modern web without web programming experience."
+    .row
+      .col-md-4.stack
+        %span.lead="Starter"
+        %p="The first of our commercial tiers provides you with your own private labeled hosting option with an unlimited number of applications and up to 1GB of memory per application deployed."
+        %button.btn.btn-primary.signup{:type => 'button', 'ng-click' => 'go("/signup")'}="Sign Up!"
+      .col-md-4.stack
+        %span.lead="Standard"
+        %p="Provides access to our Shiny Server Professional capabilities including per application user authentication and access control, support for scaling the number of applications across multiple processes, application concurrency limits and up to 2GB of memory per application deployed."
+        %button.btn.btn-primary.signup{:type => 'button', 'ng-click' => 'go("/signup")'}="Sign Up!"
+      .col-md-4.stack
+        %span.lead="Pro"
+        %p="Ideal for organizations that have multiple Shiny developers who need account sharing capabilities, require greater RAM for their applications and want the ability to white label their URLs for their applications."
+        %button.btn.btn-primary.signup{:type => 'button', 'ng-click' => 'go("/signup")'}="Sign Up!"

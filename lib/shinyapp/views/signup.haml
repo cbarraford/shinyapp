@@ -1,0 +1,47 @@
+#intro
+  .col-centered{'ng-controller' => 'signupController'}
+    .row
+      .col-md-6.col-md-offset-3
+        %form.form-horizontal
+          %fieldset
+            / Form Name
+            %legend Customer Information
+            / Appended Input
+            .form-group
+              %label.control-label{for: "domain"} Subdomain
+              .controls
+                .input-group
+                  %span.input-group-addon https://
+                  %input#domain.form-control{name: "domain", 'ng-model' => 'user.username', placeholder: "username", required: "", type: "text"}/
+                  %span.input-group-addon .shinyapps.io
+                %p.help-block the url you'll use to visit your shinyapp
+            / Text input
+            .form-group
+              %label.control-label{for: "first_name"} First Name
+              .controls
+                %input#first_name.form-control.input-xlarge{name: "first_name", 'ng-model' => 'user.first', placeholder: "John", required: "", type: "text"}/
+            / Text input
+            .form-group
+              %label.control-label{for: "last_name"} Last Name
+              .controls
+                %input#last_name.form-control.input-xlarge{name: "last_name", 'ng-model' => 'user.last', placeholder: "Doe", required: "", type: "text"}/
+            / Text input
+            .form-group
+              %label.control-label{for: "org"} Organization
+              .controls
+                %input#org.form-control.input-xlarge{name: "org", 'ng-model' => 'user.org', placeholder: "Acme", required: "", type: "text"}/
+            / Text input
+            .form-group
+              %label.control-label{for: "email"} Email Address
+              .controls
+                %input#email.form-control.input-xlarge{name: "email", 'ng-model' => 'user.email', placeholder: "jdoe@company.com", required: "", type: "text"}/
+            / Password input
+            .form-group
+              %label.control-label{for: "password1"} Password
+              .controls
+                %input#password1.form-control.input-xlarge{name: "password1", 'ng-model' => 'user.passwd', placeholder: "", required: "", type: "password"}/
+            / Button
+            .form-group
+              .controls
+                %button#signup.btn.btn-primary{name: "signup", 'ng-click' => 'signup()'} Sign Up!
+        

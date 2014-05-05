@@ -1,0 +1,214 @@
+#intro
+  .col-centered{'ng-controller' => 'signupController'}
+    .row
+      .col-md-6
+        %table.table
+          %tr
+            %td=""
+            %td="Free"
+            %td="Startup"
+            %td="Standard"
+            %td="Pro"
+          %tr
+            %td="Monthly Fee"
+            %td="$0"
+            %td="$29"
+            %td="$99"
+            %td="$299"
+          %tr
+            %td="Active hours included/month"
+            %td="35"
+            %td="250"
+            %td="1000"
+            %td="5000"
+          %tr
+            %td="Number of applications"
+            %td="10"
+            %td="Unlimited"
+            %td="Unlimited"
+            %td="Unlimited"
+          %tr
+            %td="Features"
+            %td
+              %ul
+                %li="RStudio branding"
+                %li="Public source code"
+            %td
+              %ul
+                %li="No RStudio branding"
+                %li="Private source code"
+            %td
+              %ul
+                %li="Authentication"
+                %li="Scale applications across multiple processes"
+                %li="Define application concurrency limits"
+            %td
+              %ul
+                %li="Authentication"
+                %li="Scale applications across multiple processes"
+                %li="Define application concurrency limits"
+                %li="Account sharing"
+                %li="White labeled URLs"
+          %tr
+            %td="Memory per instance"
+            %td="512MB"
+            %td="1GB"
+            %td="2GB"
+            %td="4GB"
+          %tr
+            %td="Select plan"
+            %form#plans
+              %td
+                %input{:type => 'radio', :value => 0, 'data-toggle' => 'button', :value => 'free'}
+              %td
+                %input{:type => 'radio', :value => 0, 'data-toggle' => 'button', :value => 'startup'}
+              %td
+                %input{:type => 'radio', :value => 0, 'data-toggle' => 'button', :value => 'standard', :checked => 'checked'}
+              %td
+                %input{:type => 'radio', :value => 0, 'data-toggle' => 'button', :value => 'pro'}
+    .row
+      .col-md-4
+        %form.form-horizontal{method: 'POST', action: 'https://shinyappstest.chargify.com/signups'}
+          %fieldset
+            / Form Name
+            %legend Customer Information
+            / Appended Input
+            .form-group
+              %label.control-label{for: "domain"} Subdomain
+              .controls
+                .input-group
+                  %span.input-group-addon https
+                  %input#domain.form-control{name: "domain", placeholder: "username", required: "", type: "text"}/
+                  %span.input-group-addon .shinyapp.rstudios.com
+                %p.help-block the url you'll use to visit your shinyapp
+            / Text input
+            .form-group
+              %label.control-label{for: "first_name"} First Name
+              .controls
+                %input#first_name.form-control.input-xlarge{name: "first_name", placeholder: "John", required: "", type: "text"}/
+            / Text input
+            .form-group
+              %label.control-label{for: "last_name"} Last Name
+              .controls
+                %input#last_name.form-control.input-xlarge{name: "last_name", placeholder: "Doe", required: "", type: "text"}/
+            / Text input
+            .form-group
+              %label.control-label{for: "email"} Email Address
+              .controls
+                %input#email.form-control.input-xlarge{name: "email", placeholder: "jdoe@company.com", required: "", type: "text"}/
+            / Password input
+            .form-group
+              %label.control-label{for: "password1"} Password
+              .controls
+                %input#password1.form-control.input-xlarge{name: "password1", placeholder: "", required: "", type: "password"}/
+                %p.help-block enter your password
+            / Password input
+            .form-group
+              %label.control-label{for: "password2"}
+              .controls
+                %input#password2.form-control.input-xlarge{name: "password2", placeholder: "", required: "", type: "password"}/
+                %p.help-block enter password again
+            / Text input
+            .form-group
+              %label.control-label{for: "org"} Organization
+              .controls
+                %input#org.form-control.input-xlarge{name: "org", placeholder: "Acme", required: "", type: "text"}/
+            / Select Basic
+            .form-group
+              %label.control-label{for: "cc_type"} Credit Card Type
+              .controls
+                %select#cc_type.form-control.input-medium{name: "cc_type"}
+                  %option Mastercard
+                  %option Visa
+                  %option American Express
+            / Text input
+            .form-group
+              %label.control-label{for: "cc_number"} Credit Card Number
+              .controls
+                %input#cc_number.form-control.input-medium{name: "cc_number", placeholder: "xxxx-xxxx-xxxx-xxxx", required: "", type: "text"}/
+            / Text input
+            .form-group
+              %label.control-label{for: "expires"} Expiration Date
+              .controls
+                %input#expires.form-control.input-mini{name: "expires", placeholder: "05/17", required: "", type: "text"}/
+            / Text input
+            .form-group
+              %label.control-label{for: "billaddr1"} Billing Address
+              .controls
+                %input#billaddr1.form-control.input-xlarge{name: "billaddr1", placeholder: "120 Franklin Street", required: "", type: "text"}/
+            / Text input
+            .form-group
+              %label.control-label{for: "billaddr2"}
+              .controls
+                %input#billaddr2.form-control.input-xlarge{name: "billaddr2", placeholder: "Apt A4", required: "", type: "text"}/
+            / Text input
+            .form-group
+              %label.control-label{for: "billcity"} City
+              .controls
+                %input#billcity.form-control.input-xlarge{name: "billcity", placeholder: "Boston", required: "", type: "text"}/
+            / Select Basic
+            .form-group
+              %label.control-label{for: "state"} State
+              .controls
+                %select#state.form-control.input-xlarge{name: "state"}
+                  %option Alabama
+                  %option Alaska
+                  %option Arizona
+                  %option Arkansas
+                  %option California
+                  %option Colorado
+                  %option Connecticut
+                  %option Delaware
+                  %option District Of Columbia
+                  %option Florida
+                  %option Georgia
+                  %option Hawaii
+                  %option Idaho
+                  %option Illinois
+                  %option Indiana
+                  %option Iowa
+                  %option Kansas
+                  %option Kentucky
+                  %option Louisiana
+                  %option Maine
+                  %option Maryland
+                  %option Massachusetts
+                  %option Michigan
+                  %option Minnesota
+                  %option Mississippi
+                  %option Missouri
+                  %option Montana
+                  %option Nebraska
+                  %option Nevada
+                  %option New Hampshire
+                  %option New Jersey
+                  %option New Mexico
+                  %option New York
+                  %option North Carolina
+                  %option North Dakota
+                  %option Ohio
+                  %option Oklahoma
+                  %option Oregon
+                  %option Pennsylvania
+                  %option Rhode Island
+                  %option South Carolina
+                  %option South Dakota
+                  %option Tennessee
+                  %option Texas
+                  %option Utah
+                  %option Vermont
+                  %option Virginia
+                  %option Washington
+                  %option West Virginia
+                  %option Wisconsin
+                  %option Wyoming
+            / Text input
+            .form-group
+              %label.control-label{for: "zipcode"} Zipcode
+              .controls
+                %input#zipcode.form-control.input-small{name: "zipcode", placeholder: "01234", required: "", type: "text"}/
+            / Button
+            .form-group
+              .controls
+                %input{type: 'submit', value: 'Signup'}
+        

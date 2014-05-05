@@ -1,0 +1,28 @@
+#intro
+  .col-centered
+    .row
+      .col-md-6.col-md-offset-3
+        - unless locals[:message].nil?
+          .alert.alert-danger
+            %button.close{:type => 'button', 'data-dismiss' => 'alert'} &times;
+            %strong Error!
+            = locals[:message]
+        %form.form-horizontal{action: "login", method: "post"}
+          %fieldset
+            / Form Name
+            %legend Login
+            / Text input
+            .form-group
+              %label.control-label{for: "username"} Username
+              .controls
+                %input#username.form-control.input-large{name: "username", 'ng-model' => 'user.name', required: "", type: "text"}/
+            / Password input
+            .form-group
+              %label.control-label{for: "passwd"} Password
+              .controls
+                %input#passwd.form-control.input-large{name: "passwd", 'ng-model' => 'user.passwd', required: "", type: "password"}/
+            / Button
+            .form-group
+              .controls
+                %button#signup.btn.btn-primary{name: "login", type: 'input'} Login
+        

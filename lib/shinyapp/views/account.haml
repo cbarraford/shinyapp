@@ -1,0 +1,155 @@
+.row
+  .col-md-4
+    %form.form-horizontal{'ng-controller' => 'accountInfoController'}
+      %fieldset
+        / Form Name
+        %legend Account Info
+        / Text input
+        .form-group
+          %label.col-md-6.control-label{for: "first"} First Name
+          .col-md-6
+            %input#first.form-control.input-large{name: "first", 'ng-model' => 'user.first', type: "text"}/
+        / Text input
+        .form-group
+          %label.col-md-6.control-label{for: "last"} Last Name
+          .col-md-6
+            %input#last.form-control.input-large{name: "last", 'ng-model' => 'user.last', type: "text"}/
+        / Text input
+        .form-group
+          %label.col-md-6.control-label{for: "org"} Organization
+          .col-md-6
+            %input#org.form-control.input-large{name: "org", 'ng-model' => 'user.org', type: "text"}/
+        / Text input
+        .form-group
+          %label.col-md-6.control-label{for: "email"} Email
+          .col-md-6
+            %input#email.form-control.input-large{name: "email", 'ng-model' => 'user.email', type: "text"}/
+        / Button
+        .form-group
+          %label.col-md-6.control-label{for: "submit"}
+          .col-md-6
+            %button#submit.btn.btn-success.pull-right{name: "submit", 'ng-click' => 'update()'} Update
+  .col-md-6.col-md-offset-1
+    %form.form-horizontal{'ng-controller' => 'accountPlanController'}
+      %fieldset
+        / Form Name
+        %legend Plan
+        / Select Basic
+        .form-group
+          %label.col-md-4.control-label{for: "plan"} Plan
+          .col-md-5
+            %select#plan.form-control{name: "plan", 'ng-model' => 'user.plan'}
+              %option{value: "free"} Free
+              %option{value: "startup"} Startup
+              %option{value: "standard"} Standard
+              %option{value: "pro"} Professional
+        / Button
+        .form-group
+          %label.col-md-4.control-label{for: "updateplan"}
+          .col-md-4
+            %button#updateplan.btn.btn-success{name: "updateplan", 'ng-click' => 'updateplan()'} Update
+    %div{'ng-hide' => 'user.plan == "free" || not user.plan?', 'ng-controller' => 'accountBillingController'}
+      %form.form-horizontal{method: 'POST', action: 'https://shinyappstest.chargify.com/signups'}
+        %fieldset
+          / Form Name
+          %legend Billing Information
+          / Select Basic
+          .form-group
+            %label.control-label{for: "cc_type"} Credit Card Type
+            .controls
+              %select#cc_type.form-control.input-medium{name: "cc_type", 'ng-model' => 'billing.card_type'}
+                %option{value: "master"} Mastercard
+                %option{value: "visa"} Visa
+                %option{value: "american_express"} American Express
+                %option{value: "discover"} Discover
+          / Text input
+          .form-group
+            %label.control-label{for: "cc_number"} Credit Card Number
+            .controls
+              %input#cc_number.form-control.input-medium{name: "cc_number", placeholder: "xxxx-xxxx-xxxx-xxxx", required: "", type: "text", 'ng-model' => 'billing.masked_card_number'}/
+          / Text input
+          .form-group
+            %label.control-label{for: "expires"} Expiration Date
+            .controls
+              %input#expires.form-control.input-mini{name: "expires", placeholder: "05/17", required: "", type: "text", 'ng-model' => '#{billing.expiration_month}/#{billing.expiration_year}'}/
+          / Text input
+          .form-group
+            %label.control-label{for: "billaddr1"} Billing Address
+            .controls
+              %input#billaddr1.form-control.input-xlarge{name: "billaddr1", placeholder: "120 Franklin Street", required: "", type: "text", 'ng-model' => 'billing.billing_address'}/
+          / Text input
+          .form-group
+            %label.control-label{for: "billaddr2"}
+            .controls
+              %input#billaddr2.form-control.input-xlarge{name: "billaddr2", placeholder: "Apt A4", required: "", type: "text", 'ng-model' => 'billing.billing_address_2'}/
+          / Text input
+          .form-group
+            %label.control-label{for: "billcity"} City
+            .controls
+              %input#billcity.form-control.input-xlarge{name: "billcity", placeholder: "Boston", required: "", type: "text", 'ng-model' => 'billing.billing_city'}/
+          / Select Basic
+          .form-group
+            %label.control-label{for: "state"} State
+            .controls
+              %select#state.form-control.input-xlarge{name: "state", 'ng-model' => 'billing.billing_state'}
+                %option{value: "AL"} Alabama
+                %option{value: "AK"} Alaska
+                %option{value: "AZ"} Arizona
+                %option{value: "AR"} Arkansas
+                %option{value: "CA"} California
+                %option{value: "CO"} Colorado
+                %option{value: "CT"} Connecticut
+                %option{value: "DE"} Delaware
+                %option{value: "DC"} District Of Columbia
+                %option{value: "FL"} Florida
+                %option{value: "GA"} Georgia
+                %option{value: "HI"} Hawaii
+                %option{value: "ID"} Idaho
+                %option{value: "IL"} Illinois
+                %option{value: "IN"} Indiana
+                %option{value: "IA"} Iowa
+                %option{value: "KS"} Kansas
+                %option{value: "KY"} Kentucky
+                %option{value: "LA"} Louisiana
+                %option{value: "ME"} Maine
+                %option{value: "MD"} Maryland
+                %option{value: "MA"} Massachusetts
+                %option{value: "MI"} Michigan
+                %option{value: "MN"} Minnesota
+                %option{value: "MS"} Mississippi
+                %option{value: "MO"} Missouri
+                %option{value: "MT"} Montana
+                %option{value: "NE"} Nebraska
+                %option{value: "NV"} Nevada
+                %option{value: "NH"} New Hampshire
+                %option{value: "NJ"} New Jersey
+                %option{value: "NM"} New Mexico
+                %option{value: "NY"} New York
+                %option{value: "NC"} North Carolina
+                %option{value: "ND"} North Dakota
+                %option{value: "OH"} Ohio
+                %option{value: "OK"} Oklahoma
+                %option{value: "OR"} Oregon
+                %option{value: "PA"} Pennsylvania
+                %option{value: "RI"} Rhode Island
+                %option{value: "SC"} South Carolina
+                %option{value: "SD"} South Dakota
+                %option{value: "TN"} Tennessee
+                %option{value: "TX"} Texas
+                %option{value: "UT"} Utah
+                %option{value: "VT"} Vermont
+                %option{value: "VA"} Virginia
+                %option{value: "WA"} Washington
+                %option{value: "WV"} West Virginia
+                %option{value: "WI"} Wisconsin
+                %option{value: "WY"} Wyoming
+          / Text input
+          .form-group
+            %label.control-label{for: "zipcode"} Zipcode
+            .controls
+              %input#zipcode.form-control.input-small{name: "zipcode", placeholder: "01234", required: "", type: "text", 'ng-model' => 'billing.billing_zipcode'}/
+          / Button
+          .form-group
+            %label.col-md-4.control-label{for: "updatebilling"}
+            .col-md-4
+              %button#updateplan.btn.btn-success{name: "updatebilling", 'ng-click' => 'updatebilling()'} Update
